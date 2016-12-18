@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{94C07EC1-92E1-3C5C-6CD7-C06859CDC416}") = "Traffic Match", "Assembly-UnityScript.unityproj", "{35A0B3D2-EBCB-2C99-0ED5-4B3E31BCE6FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35A0B3D2-EBCB-2C99-0ED5-4B3E31BCE6FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A0B3D2-EBCB-2C99-0ED5-4B3E31BCE6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A0B3D2-EBCB-2C99-0ED5-4B3E31BCE6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A0B3D2-EBCB-2C99-0ED5-4B3E31BCE6FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

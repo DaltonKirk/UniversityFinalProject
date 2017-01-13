@@ -25,7 +25,7 @@ for (var x = 0; x < numberOfItems; x++)
 	//var z = Random.Range(0,tiles.length);
 		Instantiate (tile, startPos, transform.rotation);
 		columns[i] = startPos;
-	yield WaitForSeconds(0.5);
+	yield WaitForSeconds(0.1);
 		
 		startPos.x += spacing;
 
@@ -47,8 +47,16 @@ for (var i = 0; i < 3; i++)
 	{
 	Instantiate (tile, columns[currentColumn], transform.rotation);
 	}
-	
-
-	
 	Debug.Log ("spawn new stuff");
+}
+public function SpawnV()
+{
+	Instantiate (tile, columns[currentColumn - 1], transform.rotation);
+	Instantiate (tile, columns[currentColumn], transform.rotation);
+	Instantiate (tile, columns[currentColumn + 1], transform.rotation);
+	Debug.Log ("spawn new stuff");
+}
+public function Instan(myColumn)
+{
+	Instantiate (tile, columns[myColumn], transform.rotation);
 }

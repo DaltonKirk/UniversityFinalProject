@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-UnityScript.unityproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\column.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Swap.js">
     <Files>
-      <File FileName="Assets\Scripts\column.js" Line="48" Column="65" />
-      <File FileName="Assets\Scripts\meal.js" Line="42" Column="42" />
-      <File FileName="Assets\Scripts\feeler.js" Line="39" Column="38" />
+      <File FileName="Assets\Scripts\column.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\meal.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Checker.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\runChecker.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Swap.js" Line="9" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

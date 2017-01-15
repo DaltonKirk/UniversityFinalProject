@@ -15,7 +15,8 @@ public var myColumn: int;
 public var generator: GameObject;
 public var objRB: Rigidbody2D;
 public var matching: boolean;
-
+public var settleTime: float;
+public var settled: boolean;
 
 
 function Start () 
@@ -36,7 +37,15 @@ objRB = GetComponent.<Rigidbody2D>();
 
 function Update () 
 {
-
+	if (gameObject.GetComponent.<Rigidbody2D>().velocity.y == 0 && !settled)
+	{
+		settleTime += 1 * Time.deltaTime;
+		if (settleTime > 1)
+		{
+		gameObject.tag = "obj";
+		settled = true;
+		}
+	}
 /*
 	if (topFeeler == gameObject.name && topFeeler == bottomFeeler && objRB.velocity.y == 0 && column.finishedSpawning && !matching) //if 3 in a row vertically
 	{

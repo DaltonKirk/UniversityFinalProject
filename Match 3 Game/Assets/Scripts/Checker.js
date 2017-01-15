@@ -6,6 +6,11 @@ public var obj3: GameObject;
 public var obj4: GameObject;
 public var obj5: GameObject;
 public var obj6: GameObject;
+public var matchedObj1: GameObject;
+public var matchedObj2: GameObject;
+public var matchedObj3: GameObject;
+public var matchedObj4: GameObject;
+public var matchedObj5: GameObject;
 public var objectsHit: int;
 public var isChecking: boolean;
 public var checkTimer: float;
@@ -17,18 +22,16 @@ public var col: int;
 public var checked: boolean;
 public var matchFound: boolean;
 public var consec: int = 0;
-
-function Start () 
-{
-
-}
+public var tile: GameObject;
+public var pos1: Vector3;
+public var pos2: Vector3;
+public var pos3: Vector3;
+public var pos4: Vector3;
+public var pos5: Vector3;
 
 function Update () 
 {
-if (objectsHit == 5)
-{
-objectsHit = 0;
-}
+
 	if (isChecking)
 	{	
 		if(gameObject.name.Contains("HChecker") && !checked)
@@ -79,6 +82,7 @@ function OnTriggerEnter2D(other:Collider2D)
 			case 4: obj4 = other.gameObject;
 			break;
 			case 5: obj5 = other.gameObject;
+					objectsHit = 0;
 			break;
 			case 6: obj6 = other.gameObject;
 			break;
@@ -96,14 +100,26 @@ function CheckMatches()
 			{
 				consec = 3;
 				matchFound = true;
+				matchedObj1 = foundObjs[0];
+				matchedObj2 = foundObjs[1];
+				matchedObj3 = foundObjs[2];
 				if(foundObjs[0].name == foundObjs[0+3].name) // if 4
 				{	
 					consec = 4;
 					matchFound = true;
+					matchedObj1 = foundObjs[0];
+					matchedObj2 = foundObjs[1];
+					matchedObj3 = foundObjs[2];
+					matchedObj4 = foundObjs[3];
 					if(foundObjs[0].name == foundObjs[0+4].name) // if 5
 					{
 						consec = 5;
 						matchFound = true;
+						matchedObj1 = foundObjs[0];
+						matchedObj2 = foundObjs[1];
+						matchedObj3 = foundObjs[2];
+						matchedObj4 = foundObjs[3];
+						matchedObj5 = foundObjs[4];
 					}
 				}
 				Debug.Log(gameObject.name + " " + consec);
@@ -118,10 +134,17 @@ function CheckMatches()
 				{
 				consec = 3;
 				matchFound = true;
+				matchedObj1 = foundObjs[1];
+				matchedObj2 = foundObjs[2];
+				matchedObj3 = foundObjs[3];
 					if(foundObjs[1].name == foundObjs[1+3].name) // if 4
 					{
 						consec = 4;
 						matchFound = true;
+						matchedObj1 = foundObjs[1];
+						matchedObj2 = foundObjs[2];
+						matchedObj3 = foundObjs[3];
+						matchedObj4 = foundObjs[4];
 					}
 					Debug.Log(gameObject.name + " " + consec);
 				}
@@ -136,11 +159,102 @@ function CheckMatches()
 				{
 					consec = 3;
 					matchFound = true;
+					matchedObj1 = foundObjs[2];
+					matchedObj2 = foundObjs[3];
+					matchedObj3 = foundObjs[4];
 					Debug.Log(gameObject.name + " " + consec);
 				}
 			}
 		}
+		if(matchFound)
+		{
+		Match();
 		matchFound = false;
+		}
+}
+
+function Match()
+{
+	switch (consec)
+	{
+		case 3:
+				//Save Positions
+				pos1.x = matchedObj1.transform.position.x;
+				pos2.x = matchedObj2.transform.position.x;
+				pos3.x = matchedObj3.transform.position.x;
+				//Spawn New ones
+				Spawn1();
+				Spawn2();
+				Spawn3();
+				//Delete objs
+				Destroy(matchedObj1);
+				Destroy(matchedObj2);
+				Destroy(matchedObj3);
+				
+		break;
+		case 4:
+				//Save Positions
+				pos1.x = matchedObj1.transform.position.x;
+				pos2.x = matchedObj2.transform.position.x;
+				pos3.x = matchedObj3.transform.position.x;
+				pos4.x = matchedObj4.transform.position.x;
+				//Spawn New ones
+				Spawn1();
+				Spawn2();
+				Spawn3();
+				Spawn4();
+				//Delete objs
+				Destroy(matchedObj1);
+				Destroy(matchedObj2);
+				Destroy(matchedObj3);
+				Destroy(matchedObj4);
+				
+		break;
+		case 5:
+				//Save Positions
+				pos1.x = matchedObj1.transform.position.x;
+				pos2.x = matchedObj2.transform.position.x;
+				pos3.x = matchedObj3.transform.position.x;
+				pos4.x = matchedObj4.transform.position.x;
+				pos5.x = matchedObj5.transform.position.x;
+				//Spawn New ones
+				Spawn1();
+				Spawn2();
+				Spawn3();
+				Spawn4();
+				Spawn5();
+				//Delete objs
+				Destroy(matchedObj1);
+				Destroy(matchedObj2);
+				Destroy(matchedObj3);
+				Destroy(matchedObj4);
+				Destroy(matchedObj5);
+				
+		break;
+
+	}
+
+
+}
+function Spawn1()
+{
+	Instantiate (tile, pos1, transform.rotation);
+}
+function Spawn2()
+{
+	Instantiate (tile, pos2, transform.rotation);
+}
+function Spawn3()
+{
+	Instantiate (tile, pos3, transform.rotation);
+}
+function Spawn4()
+{
+	Instantiate (tile, pos4, transform.rotation);
+}
+function Spawn5()
+{
+	Instantiate (tile, pos5, transform.rotation);
 }
 
 

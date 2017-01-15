@@ -60,3 +60,23 @@ public function Instan(myColumn)
 {
 	Instantiate (tile, columns[myColumn], transform.rotation);
 }
+public function Spawn1(pos1)
+{
+	Instantiate (tile, pos1, transform.rotation);
+}
+public function Spawn2(pos2)
+{
+	Instantiate (tile, pos2, transform.rotation);
+}
+public function Spawn3(pos3)
+{
+	Instantiate (tile, pos3, transform.rotation);
+}
+public function Spawn4(pos4)
+{
+	Instantiate (tile, pos4, transform.rotation);
+}
+public function Spawn5(pos5)
+{
+	Instantiate (tile, pos5, transform.rotation);
+}

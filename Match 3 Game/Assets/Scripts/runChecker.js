@@ -26,35 +26,16 @@ if(Input.GetKeyDown (KeyCode.K))
 function RunAllChecks()
 {
 	HChecker1Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	HChecker2Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	HChecker3Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	HChecker4Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	HChecker5Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	VChecker1Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	VChecker2Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	VChecker3Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	VChecker4Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
-	VChecker5Script.CheckMatches();
-	yield WaitForSeconds(2);
-	Scan();
+	HChecker2Script.CheckMatches(); 
+	HChecker3Script.CheckMatches();  
+	HChecker4Script.CheckMatches();  
+	HChecker5Script.CheckMatches();  
+	VChecker1Script.CheckMatches();  
+	VChecker2Script.CheckMatches();  
+	VChecker3Script.CheckMatches();  
+	VChecker4Script.CheckMatches(); 
+	VChecker5Script.CheckMatches(); 
+	
 }
 function Scan()
 {

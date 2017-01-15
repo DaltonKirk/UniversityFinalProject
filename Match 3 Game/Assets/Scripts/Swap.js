@@ -2,11 +2,14 @@
 //Attach this script to an empty gameobject.
 //When you click on a sprite with a collider it will tell you it's name.
 public var worldPoint: Vector2;
+public var firstObjColumn: int;
+public var secondObjColumn: int;
 public var pos1: Vector2;
 public var hit: RaycastHit2D;
 public var worldPoint2: Vector2;
 public var pos2: Vector2;
 public var hit2: RaycastHit2D;
+public var checkScript: runChecker;
 function Update() {
     //If the left mouse button is clicked.
     if (Input.GetMouseButtonDown(0)) {
@@ -15,8 +18,9 @@ function Update() {
         hit = Physics2D.Raycast(worldPoint, Vector2.zero);
         //If something was hit, the RaycastHit2D.collider will not be null.
         if (hit.collider != null) {
-            Debug.Log(hit.collider.name);
-            pos1 = hit.collider.gameObject.transform.position;
+			
+            pos1 = hit.collider.gameObject.transform.position; //Get Position of first obj
+			firstObjColumn = hit.collider.gameObject.GetComponent.<meal>().myColumn; //Get column number of first obj
         }
     }
 
@@ -26,11 +30,22 @@ function Update() {
         hit2 = Physics2D.Raycast(worldPoint2, Vector2.zero);
         //If something was hit, the RaycastHit2D.collider will not be null.
         if (hit2.collider != null) {
-            Debug.Log(hit2.collider.name);
-            pos2 = hit2.collider.gameObject.transform.position;
-            Debug.Log(pos2);
-            hit.collider.gameObject.transform.position = pos2;
-            hit2.collider.gameObject.transform.position = pos1;
+			
+            pos2 = hit2.collider.gameObject.transform.position; // Get position of secong obj
+			secondObjColumn = hit2.collider.gameObject.GetComponent.<meal>().myColumn; //Get 2nd obj column number
+            hit.collider.gameObject.transform.position = pos2; //swap the objs position
+            hit2.collider.gameObject.transform.position = pos1;//swap the objs postion
+			hit.collider.gameObject.GetComponent.<meal>().myColumn = secondObjColumn; //swap column number
+			hit2.collider.gameObject.GetComponent.<meal>().myColumn = firstObjColumn; //swap column number
+			
+			Check(); // check matches
+			
         }
     }
+}
+function Check()
+{
+	checkScript.Scan();
+	yield WaitForSeconds(0.5);
+	checkScript.RunAllChecks();
 }

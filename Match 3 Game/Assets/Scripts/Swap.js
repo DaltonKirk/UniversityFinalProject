@@ -17,7 +17,7 @@ function Update() {
         worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         hit = Physics2D.Raycast(worldPoint, Vector2.zero);
         //If something was hit, the RaycastHit2D.collider will not be null.
-        if (hit.collider != null) {
+        if (hit.collider != null && hit.collider.gameObject.tag == "obj") {
 			
             pos1 = hit.collider.gameObject.transform.position; //Get Position of first obj
 			firstObjColumn = hit.collider.gameObject.GetComponent.<meal>().myColumn; //Get column number of first obj
@@ -29,7 +29,7 @@ function Update() {
         worldPoint2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         hit2 = Physics2D.Raycast(worldPoint2, Vector2.zero);
         //If something was hit, the RaycastHit2D.collider will not be null.
-        if (hit2.collider != null) {
+        if (hit2.collider != null  && hit.collider.gameObject.tag == "obj") {
 			
             pos2 = hit2.collider.gameObject.transform.position; // Get position of secong obj
 			secondObjColumn = hit2.collider.gameObject.GetComponent.<meal>().myColumn; //Get 2nd obj column number
@@ -38,7 +38,7 @@ function Update() {
 			hit.collider.gameObject.GetComponent.<meal>().myColumn = secondObjColumn; //swap column number
 			hit2.collider.gameObject.GetComponent.<meal>().myColumn = firstObjColumn; //swap column number
 			
-			Check(); // check matches
+			Check();
 			
         }
     }

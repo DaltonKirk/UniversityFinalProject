@@ -28,6 +28,8 @@ public var pos2: Vector3;
 public var pos3: Vector3;
 public var pos4: Vector3;
 public var pos5: Vector3;
+public var readyMealObj: GameObject;
+public var readyMealSpawnPoint: Vector3;
 
 function Update () 
 {
@@ -178,6 +180,9 @@ function Match()
 	switch (consec)
 	{
 		case 3:
+				//spawn ready meal
+				var  madeMeal1 = Instantiate(readyMealObj, readyMealSpawnPoint, transform.rotation);
+				madeMeal1.GetComponent.<ReadyMeal>().mealName = matchedObj1.name;
 				//Save Positions
 				pos1.x = matchedObj1.transform.position.x;
 				pos2.x = matchedObj2.transform.position.x;
@@ -191,8 +196,12 @@ function Match()
 				Destroy(matchedObj2);
 				Destroy(matchedObj3);
 				
+				
 		break;
 		case 4:
+				//spawn ready meal
+				var  madeMeal2 = Instantiate(readyMealObj, readyMealSpawnPoint, transform.rotation);
+				madeMeal2.GetComponent.<ReadyMeal>().mealName =  matchedObj1.name;
 				//Save Positions
 				pos1.x = matchedObj1.transform.position.x;
 				pos2.x = matchedObj2.transform.position.x;
@@ -211,6 +220,9 @@ function Match()
 				
 		break;
 		case 5:
+				//spawn ready meal
+				var  madeMeal3 = Instantiate(readyMealObj, readyMealSpawnPoint, transform.rotation);
+				madeMeal3.GetComponent.<ReadyMeal>().mealName =  matchedObj1.name;
 				//Save Positions
 				pos1.x = matchedObj1.transform.position.x;
 				pos2.x = matchedObj2.transform.position.x;

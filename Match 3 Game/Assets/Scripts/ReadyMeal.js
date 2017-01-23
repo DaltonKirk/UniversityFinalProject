@@ -5,7 +5,12 @@ public var pickedUpObj: GameObject;
 public var hit: RaycastHit2D;
 public var mealName: String;
 public var isPickedUp: boolean;
+public var readyMealSpawnPos: GameObject;
 
+function Start()
+{
+	readyMealSpawnPos = gameObject.FindGameObjectWithTag ("readyMealSpawnPos");
+}
 
 function Update() 
 {
@@ -13,6 +18,7 @@ function Update()
 	{
 		pickedUpObj.transform.position = currentWorldPoint;
 		isPickedUp = true;
+		//gameObject.GetComponent.<BoxCollider2D>().isTrigger = true;
 	}
 	currentWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	//when you click send raycast at that point
@@ -36,14 +42,17 @@ function Update()
 		{
             pickedUpObj = null;
 			isPickedUp = false;
+			//gameObject.GetComponent.<BoxCollider2D>().isTrigger = false;
+			transform.position = readyMealSpawnPos.transform.position;
+
         }
     }
 }
-function OnTriggerStay2D(other:Collider2D)
+function OnCollisionStay2D(other:Collision2D)
 {
-	if (!isPickedUp && other.gameObject.tag == "customer")
+	if (other.gameObject.tag == "customer") //!isPickedUp && 
 	{
-		if (mealName == other.GetComponent.<Customer>().order)
+		if (mealName == other.gameObject.GetComponent.<Customer>().order)
 		{
 			Debug.Log("served");
 			Destroy (other.gameObject);

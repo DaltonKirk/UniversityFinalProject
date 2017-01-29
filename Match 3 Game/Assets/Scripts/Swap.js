@@ -10,6 +10,7 @@ public var worldPoint2: Vector2;
 public var pos2: Vector2;
 public var hit2: RaycastHit2D;
 public var checkScript: runChecker;
+static var lastObjMoved: GameObject;
 function Update() {
     //If the left mouse button is clicked.
     if (Input.GetMouseButtonDown(0)) {
@@ -37,6 +38,7 @@ function Update() {
             hit2.collider.gameObject.transform.position = pos1;//swap the objs postion
 			hit.collider.gameObject.GetComponent.<meal>().myColumn = secondObjColumn; //swap column number
 			hit2.collider.gameObject.GetComponent.<meal>().myColumn = firstObjColumn; //swap column number
+			lastObjMoved = hit.collider.gameObject;
 			
 			Check();
 			

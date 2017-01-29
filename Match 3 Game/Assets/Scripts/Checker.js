@@ -166,19 +166,37 @@ function CheckMatches()
 }
 function ExecuteMatch()
 {
+	var validMatch: boolean;
 	if (matchedObjsV2.Count > 2)
 	{
-	for(var matchObjV2: GameObject in matchedObjsV2)
-	{
-		var pos: Vector2;
-		pos.x = matchObjV2.transform.position.x;
-		pos.y = 8;
-		Instantiate(tile, pos, transform.rotation);
-		Destroy(matchObjV2);
-	}
-	matchedObjsV2.Clear();
+		for(var matchObjV2: GameObject in matchedObjsV2)
+		{
+			if( matchObjV2 == Swap.lastObjMoved)
+			{
+				validMatch = true;
+			}
+		}
+		if (validMatch)
+		{
+		for(var matchObjV2: GameObject in matchedObjsV2)
+		{
+			var pos: Vector2;
+			pos.x = matchObjV2.transform.position.x;
+			pos.y = 8;
+			if (columnScript.numberOfMealsInStock > 0)
+			{
+			Instantiate(tile, pos, transform.rotation);
+			columnScript.numberOfMealsInStock --;
+			}
+			Destroy(matchObjV2);
+		}
+		matchedObjsV2.Clear();
+		}
 	}
 }
+	
+	
+
 
 /*function CheckMatches()
 {

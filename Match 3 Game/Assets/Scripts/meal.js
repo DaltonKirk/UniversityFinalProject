@@ -40,7 +40,7 @@ function Update ()
 	if (gameObject.GetComponent.<Rigidbody2D>().velocity.y == 0 && !settled)
 	{
 		settleTime += 1 * Time.deltaTime;
-		if (settleTime > 1)
+		if (settleTime > 0.3)
 		{
 		gameObject.tag = "obj";
 		settled = true;

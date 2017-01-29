@@ -1,11 +1,11 @@
-﻿#pragma strict
+﻿	#pragma strict
+	import System.Collections.Generic;
 
 public var obj1: GameObject;
 public var obj2: GameObject;
 public var obj3: GameObject;
 public var obj4: GameObject;
 public var obj5: GameObject;
-public var obj6: GameObject;
 public var matchedObj1: GameObject;
 public var matchedObj2: GameObject;
 public var matchedObj3: GameObject;
@@ -30,6 +30,11 @@ public var pos4: Vector3;
 public var pos5: Vector3;
 public var readyMealObj: GameObject;
 public var readyMealSpawnPoint: Vector3;
+public var lastAmountObjsFound: int;
+public var foundObjsV2: List.<GameObject>;
+public var lastName: String;
+public var amountFound: int;
+public var matchedObjsV2: List.<GameObject>;
 
 function Update () 
 {
@@ -56,7 +61,12 @@ function Update ()
 		isChecking = false;
 		checked = !checked;
 		}
-
+		lastAmountObjsFound = objectsHit;
+	}
+	else
+	{
+		//reset this to 0 after checking, so next check works properly
+		objectsHit = 0;
 	}
 	if(Input.GetKeyDown (KeyCode.J))
 	{
@@ -84,18 +94,98 @@ function OnTriggerEnter2D(other:Collider2D)
 			case 4: obj4 = other.gameObject;
 			break;
 			case 5: obj5 = other.gameObject;
-					objectsHit = 0;
-			break;
-			case 6: obj6 = other.gameObject;
 			break;
 		}
 	}
 }
+
 function CheckMatches()
+{
+	matchedObjsV2.Clear();
+	amountFound = 0;
+	foundObjsV2.Clear();
+	if (obj1 != null)
+	foundObjsV2.Add (obj1);
+	if (obj2 != null)
+	foundObjsV2.Add (obj2);
+	if (obj3 != null)
+	foundObjsV2.Add (obj3); 
+	if (obj4 != null)
+	foundObjsV2.Add (obj4);
+	if (obj5 != null)
+	foundObjsV2.Add (obj5); 
+	lastName = foundObjsV2[0].name;
+	for(var i = 0; i < (lastAmountObjsFound); i++)
+	{
+		if(foundObjsV2[i].name == lastName)
+		{
+			amountFound ++;
+			matchedObjsV2.Add(foundObjsV2[i]);
+		}
+		else
+		{
+			if (amountFound == 3)
+			{
+				Debug.Log(gameObject.name + " new match 3");
+				ExecuteMatch();
+			}
+			if (amountFound == 4)
+			{	
+				Debug.Log(gameObject.name + " new match 4");
+				ExecuteMatch();
+			}
+			if (amountFound == 5)
+			{
+				Debug.Log(gameObject.name + " new match 5");
+				ExecuteMatch();
+			}
+			lastName = foundObjsV2[i].name;
+			amountFound = 1;
+			matchedObjsV2.Clear();
+			matchedObjsV2.Add(foundObjsV2[i]);
+			
+			
+		}
+	}
+	if (amountFound == 3)
+	{
+		Debug.Log(gameObject.name + " new match 3");
+		ExecuteMatch();
+	}
+	if (amountFound == 4)
+	{	
+		Debug.Log(gameObject.name + " new match 4");
+		ExecuteMatch();
+	}
+	if (amountFound == 5)
+	{
+		Debug.Log(gameObject.name + " new match 5");
+		ExecuteMatch();
+	}
+	
+}
+function ExecuteMatch()
+{
+	if (matchedObjsV2.Count > 2)
+	{
+	for(var matchObjV2: GameObject in matchedObjsV2)
+	{
+		var pos: Vector2;
+		pos.x = matchObjV2.transform.position.x;
+		pos.y = 8;
+		Instantiate(tile, pos, transform.rotation);
+		Destroy(matchObjV2);
+	}
+	matchedObjsV2.Clear();
+	}
+}
+
+/*function CheckMatches()
 {
 	
 	foundObjs[0] = obj1; foundObjs[1] = obj2; foundObjs[2] = obj3; foundObjs[3] = obj4; foundObjs[4] = obj5;
 	//Check First obj
+	if(lastAmountObjsFound >= 3);
 		if(foundObjs[0].name == foundObjs[0+1].name) // if 2
 		{
 			if(foundObjs[0].name == foundObjs[0+2].name) // if 3
@@ -128,7 +218,7 @@ function CheckMatches()
 				}
 			}
 		//Check second obj
-		if(!matchFound)
+		if(!matchFound && lastAmountObjsFound >= 4)
 		{
 			if(foundObjs[1].name == foundObjs[1+1].name) // if 2
 			{
@@ -153,7 +243,7 @@ function CheckMatches()
 			}
 		}
 		//Check third obj
-		if (!matchFound)
+		if (!matchFound && lastAmountObjsFound >= 5)
 		{
 			if(foundObjs[2].name == foundObjs[2+1].name) // if 2
 			{
@@ -270,5 +360,5 @@ function Spawn5()
 }
 
 
-
+*/
 

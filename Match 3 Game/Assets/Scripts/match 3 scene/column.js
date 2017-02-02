@@ -12,6 +12,11 @@ static var currentColumn: int;
 static var finishedSpawning: boolean;
 public var columns: Vector2[];
 
+function Start()
+{
+	numberOfMealsInStock = Stock.stock;
+}
+
 function SpawnGrid () 
 {
 //so we know what to set the current column to in the meal script

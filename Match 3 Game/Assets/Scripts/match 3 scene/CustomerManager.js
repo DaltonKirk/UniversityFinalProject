@@ -53,7 +53,10 @@ function OpenShop()
 		openSignText.text = "Open";
 		bottomCollider.SetActive(false);
 		DeleteObjs();
+		Stock.stock = gridSpawner.numberOfMealsInStock;
+	Application.LoadLevel("managementScene");
 	}
+	
 }
 function DeleteObjs()
 {

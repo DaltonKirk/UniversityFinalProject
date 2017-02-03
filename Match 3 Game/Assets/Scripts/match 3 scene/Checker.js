@@ -178,6 +178,8 @@ function ExecuteMatch()
 		}
 		if (validMatch)
 		{
+		var  madeMeal = Instantiate(readyMealObj, readyMealSpawnPoint, transform.rotation);
+		madeMeal.GetComponent.<ReadyMeal>().mealName =  matchedObjsV2[0].name;
 		for(var matchObjV2: GameObject in matchedObjsV2)
 		{
 			var pos: Vector2;

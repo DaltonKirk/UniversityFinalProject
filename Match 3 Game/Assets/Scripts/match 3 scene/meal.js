@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-public var colour: Color[];
+public var sprite: Sprite[];
 public var names: String[];
 public var topFeeler: String;
 public var bottomFeeler: String;
@@ -21,7 +21,7 @@ public var settled: boolean;
 
 function Start () 
 {
-objRB = GetComponent.<Rigidbody2D>();
+	objRB = GetComponent.<Rigidbody2D>();
 	generator = gameObject.FindGameObjectWithTag ("gen");
 	myColumn = column.currentColumn;
 	column.currentColumn ++;
@@ -32,7 +32,7 @@ objRB = GetComponent.<Rigidbody2D>();
 	
 	var i = Random.Range(0, names.length);
 	name =  names[i];
-	GetComponent.<SpriteRenderer>().color = colour[i];
+	GetComponent.<SpriteRenderer>().sprite = sprite[i];
 }
 
 function Update () 

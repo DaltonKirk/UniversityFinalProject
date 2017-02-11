@@ -1,32 +1,32 @@
 ﻿#pragma strict
 import UnityEngine.UI;
 
-public var spawnPoint: Vector2;
+public var spawnPoints: GameObject[];
 public var customerObj: GameObject;
 public var nextCustomerTimer: float;
 public var customerSpawnInterval: float;
-public var getSpawnPointObj: GameObject;
 public var maxCustomers: int;
 public var maxConcurrentCustomers: int;
 public var customersSpawned: int;
 public var concurrentCustomersSpawned: int;
-public var shopOpen: boolean;
-public var openSignText: Text;
 public var gridSpawner: column;
 public var bottomCollider: GameObject;
+public var queNumber: int;
+public var spawnPoint: Vector3;
+public var customers: GameObject[];
 
 
 
 
 function Start () {
-	
+	gridSpawner.SpawnGrid();
 }
 
 function Update () 
 {
-	spawnPoint = getSpawnPointObj.transform.position;
+	spawnPoint = spawnPoints[queNumber].transform.position;
 	nextCustomerTimer += 1 * Time.deltaTime;
-	if	(nextCustomerTimer > customerSpawnInterval && concurrentCustomersSpawned < maxConcurrentCustomers && customersSpawned < maxCustomers && shopOpen)
+	if	(nextCustomerTimer > customerSpawnInterval && concurrentCustomersSpawned < maxConcurrentCustomers && customersSpawned < maxCustomers)
 	{
 		SpawnCustomer();
 		nextCustomerTimer = 0;
@@ -37,26 +37,18 @@ function SpawnCustomer()
 	customersSpawned ++;
 	concurrentCustomersSpawned ++;
 	Instantiate(customerObj,spawnPoint,transform.rotation);
+	if (queNumber == 1){
+		queNumber = 0;
+		} else {
+			queNumber = 1;
+		}
 }
-function OpenShop()
+function CloseShop()
 {
-	shopOpen = !shopOpen;
-	
-	if(shopOpen)
-	{
-		openSignText.text = "Close";
-		gridSpawner.SpawnGrid();
-		bottomCollider.SetActive(true);
-	}
-	else
-	{
-		openSignText.text = "Open";
 		bottomCollider.SetActive(false);
 		DeleteObjs();
 		Stock.stock = gridSpawner.numberOfMealsInStock;
-	Application.LoadLevel("managementScene");
-	}
-	
+		Application.LoadLevel("managementScene");
 }
 function DeleteObjs()
 {
@@ -79,4 +71,12 @@ function DeleteObjs()
 		{
 			Destroy (customers[t]); 
 		}
+}
+function CustomerServed()
+{
+	concurrentCustomersSpawned --;
+	customers = gameObject.FindGameObjectsWithTag("customer");
+	for (var customerObj: GameObject in customers){
+		customerObj.GetComponent.<Customer>().speed = -1;
+	}
 }

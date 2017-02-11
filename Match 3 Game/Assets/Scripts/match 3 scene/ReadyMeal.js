@@ -6,10 +6,29 @@ public var hit: RaycastHit2D;
 public var mealName: String;
 public var isPickedUp: boolean;
 public var readyMealSpawnPos: GameObject;
+public var sprites: Sprite[];
+public var customerManager: CustomerManager;
+
 
 function Start()
 {
+	customerManager = gameObject.FindGameObjectWithTag("CustomerManager").GetComponent.<CustomerManager>();
 	readyMealSpawnPos = gameObject.FindGameObjectWithTag ("readyMealSpawnPos");
+	var i: int; 
+	switch(mealName)
+	{
+	case "blue": i = 0;
+	break;
+	case "green": i = 1;
+	break;
+	case "white": i = 2;
+	break;
+	case "red": i = 3;
+	break;
+	case "black": i = 4;
+	break;
+	}
+	gameObject.GetComponent.<SpriteRenderer>().sprite = sprites[i];
 }
 
 function Update() 
@@ -54,6 +73,8 @@ function OnCollisionStay2D(other:Collision2D)
 	{
 		if (mealName == other.gameObject.GetComponent.<Customer>().order)
 		{
+			customerManager.CustomerServed();
+			money.money += 10;
 			Debug.Log("served");
 			Destroy (other.gameObject);
 			Destroy (this.gameObject);

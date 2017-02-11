@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-public var sprite: Sprite[];
+public var sprites: Sprite[];
 public var names: String[];
 public var topFeeler: String;
 public var bottomFeeler: String;
@@ -32,7 +32,7 @@ function Start ()
 	
 	var i = Random.Range(0, names.length);
 	name =  names[i];
-	GetComponent.<SpriteRenderer>().sprite = sprite[i];
+	GetComponent.<SpriteRenderer>().sprite = sprites[i];
 }
 
 function Update () 

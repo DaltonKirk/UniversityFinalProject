@@ -7,11 +7,17 @@ public var speed: float;
 public var mealSprites: Sprite[];
 public var orderSpriteObj: GameObject;
 public var speechBubbleObj: GameObject;
+public var rating: float;
+public var customerSatisfaction: CustomerSatisfaction;
+public var ratingDecreaseSpeed: float;
 
 
 
 function Start () 
 {
+		customerSatisfaction = gameObject.FindGameObjectWithTag("CustomerSatisfaction").GetComponent.<CustomerSatisfaction>();
+		rating = 10;
+
 		var rand = Random.Range (0,4);
 		order = meals[rand];
 		orderText.text = order;
@@ -40,6 +46,7 @@ function Update ()
 		} else {
 			MakeOrder();
 		}
+		rating += ratingDecreaseSpeed * Time.deltaTime;
 }
 function OnCollisionStay2D()
 {
@@ -48,4 +55,9 @@ function OnCollisionStay2D()
 function MakeOrder()
 {
 	speechBubbleObj.SetActive(true);
+}
+function SendRating()
+{
+	customerSatisfaction.customerRatingsTotal += rating;
+	customerSatisfaction.numberOfRatings ++;
 }

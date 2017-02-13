@@ -73,6 +73,7 @@ function OnCollisionStay2D(other:Collision2D)
 	{
 		if (mealName == other.gameObject.GetComponent.<Customer>().order)
 		{
+			other.gameObject.GetComponent.<Customer>().SendRating();
 			customerManager.CustomerServed();
 			money.money += 10;
 			Debug.Log("served");

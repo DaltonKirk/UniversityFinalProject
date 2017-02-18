@@ -14,12 +14,19 @@ public var bottomCollider: GameObject;
 public var queNumber: int;
 public var spawnPoint: Vector3;
 public var customers: GameObject[];
+public var customerSatisfaction: CustomerSatisfaction;
+private var reputation: float;
 
 
 
 
 function Start () {
 	gridSpawner.SpawnGrid();
+	reputation = PlayerPrefs.GetFloat("reputation");
+	maxCustomers = (reputation/100)*10;
+	if (maxCustomers < 1){
+	maxCustomers = 1;
+	}
 }
 
 function Update () 
@@ -30,6 +37,10 @@ function Update ()
 	{
 		SpawnCustomer();
 		nextCustomerTimer = 0;
+	}
+	if(concurrentCustomersSpawned == 0 && customersSpawned == maxCustomers)
+	{
+		CloseShop();
 	}
 }
 function SpawnCustomer()
@@ -48,6 +59,8 @@ function CloseShop()
 		bottomCollider.SetActive(false);
 		DeleteObjs();
 		Stock.stock = gridSpawner.numberOfMealsInStock;
+		customerSatisfaction.UpdateReputation();
+		Debug.Log("load scene");
 		Application.LoadLevel("managementScene");
 }
 function DeleteObjs()

@@ -6,6 +6,9 @@ public var repChangeText: Text;
 public var avgRatingText: Text;
 public var moneyMadeText: Text;
 public var summaryPanel: GameObject;
+public var businessManager: BusinessManager;
+
+public var bakeryPriceText: Text;
 
 function Start()
 {
@@ -13,6 +16,8 @@ function Start()
 	repChangeText.text = "Reputation Change: " + PlayerPrefs.GetFloat("repChange").ToString("f2");
 	avgRatingText.text = "Average Rating: " + (PlayerPrefs.GetFloat("customerRatingsAveragePercentage")*10).ToString("f1")+"/10";
 	moneyMadeText.text = "Money Made: ";
+	UpdateBusinessesOwnedText();
+
 }
 function GoToRestaurant()
 {
@@ -25,4 +30,12 @@ function HideSummary()
 function DeleteSave()
 {
 	PlayerPrefs.DeleteAll();
+}
+function UpdateBusinessesOwnedText()
+{
+	//if bakeryPurchased then show it as owned
+	if(businessManager.bakeryPurchased)
+	{
+		bakeryPriceText.text = "Owned";
+	}
 }

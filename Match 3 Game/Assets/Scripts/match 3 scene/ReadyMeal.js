@@ -75,7 +75,7 @@ function OnCollisionStay2D(other:Collision2D)
 		{
 			other.gameObject.GetComponent.<Customer>().SendRating();
 			customerManager.CustomerServed();
-			money.money += 10;
+			money.money += 5;
 			Debug.Log("served");
 			Destroy (other.gameObject);
 			Destroy (this.gameObject);

@@ -7,6 +7,8 @@ public var stockDisplay: Text;
 
 function Start()
 {
+	stock = PlayerPrefs.GetInt("stock");
+	
 	stockDisplay.text = "Stock: " + stock;
 }
 

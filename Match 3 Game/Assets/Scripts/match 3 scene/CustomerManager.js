@@ -61,6 +61,8 @@ function CloseShop()
 		Stock.stock = gridSpawner.numberOfMealsInStock;
 		customerSatisfaction.UpdateReputation();
 		Debug.Log("load scene");
+		PlayerPrefs.SetFloat("money", money.money);
+		PlayerPrefs.SetInt("stock", Stock.stock);
 		Application.LoadLevel("managementScene");
 }
 function DeleteObjs()

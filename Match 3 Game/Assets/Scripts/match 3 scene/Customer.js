@@ -5,6 +5,7 @@ public var orderText: TextMesh;
 public var stopPoint: Vector2;
 public var speed: float;
 public var mealSprites: Sprite[];
+public var mealSpritesBakery: Sprite[];
 public var orderSpriteObj: GameObject;
 public var speechBubbleObj: GameObject;
 public var rating: float;
@@ -35,7 +36,14 @@ function Start ()
 			case "black": i = 4;
 			break;
 		}
-		orderSpriteObj.GetComponent.<SpriteRenderer>().sprite = mealSprites[i];
+		switch(PlayerPrefs.GetString ("currentBusiness"))
+		{
+		case "FastFood": orderSpriteObj.GetComponent.<SpriteRenderer>().sprite = mealSprites[i];
+		break;
+		case "Bakery": orderSpriteObj.GetComponent.<SpriteRenderer>().sprite = mealSpritesBakery[i];
+		break;
+		}
+
 
 }
 

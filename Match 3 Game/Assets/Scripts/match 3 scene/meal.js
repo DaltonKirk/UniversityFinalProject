@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 public var sprites: Sprite[];
+public var spritesBakery: Sprite[];
 public var names: String[];
 public var topFeeler: String;
 public var bottomFeeler: String;
@@ -21,6 +22,7 @@ public var settled: boolean;
 
 function Start () 
 {
+	var currentBusiness = PlayerPrefs.GetString("currentBusiness");
 	objRB = GetComponent.<Rigidbody2D>();
 	generator = gameObject.FindGameObjectWithTag ("gen");
 	myColumn = column.currentColumn;
@@ -29,10 +31,22 @@ function Start ()
 		{
 			column.currentColumn = 0;
 		}
-	
-	var i = Random.Range(0, names.length);
-	name =  names[i];
-	GetComponent.<SpriteRenderer>().sprite = sprites[i];
+//Set sprite depending on business loaded
+	switch (currentBusiness)
+	{
+	case "FastFood": 
+		var f = Random.Range(0, names.length);
+		name =  names[f];
+		GetComponent.<SpriteRenderer>().sprite = sprites[f];
+	break;
+
+	case "Bakery":
+		var b = Random.Range(0, names.length);
+		name =  names[b];
+		GetComponent.<SpriteRenderer>().sprite = spritesBakery[b];
+	break;
+
+	}
 }
 
 function Update () 

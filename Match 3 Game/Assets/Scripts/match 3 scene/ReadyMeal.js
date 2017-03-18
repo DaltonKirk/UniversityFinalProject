@@ -7,6 +7,7 @@ public var mealName: String;
 public var isPickedUp: boolean;
 public var readyMealSpawnPos: GameObject;
 public var sprites: Sprite[];
+public var spritesBakery: Sprite[];
 public var customerManager: CustomerManager;
 
 
@@ -28,7 +29,14 @@ function Start()
 	case "black": i = 4;
 	break;
 	}
-	gameObject.GetComponent.<SpriteRenderer>().sprite = sprites[i];
+	switch(PlayerPrefs.GetString ("currentBusiness"))
+		{
+		case "FastFood": gameObject.GetComponent.<SpriteRenderer>().sprite = sprites[i];
+		break;
+		case "Bakery": gameObject.GetComponent.<SpriteRenderer>().sprite = spritesBakery[i];
+		break;
+		}
+	
 }
 
 function Update() 
@@ -75,7 +83,7 @@ function OnCollisionStay2D(other:Collision2D)
 		{
 			other.gameObject.GetComponent.<Customer>().SendRating();
 			customerManager.CustomerServed();
-			money.money += 5;
+			money.money += 15;
 			Debug.Log("served");
 			Destroy (other.gameObject);
 			Destroy (this.gameObject);

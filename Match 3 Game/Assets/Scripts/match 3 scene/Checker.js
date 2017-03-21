@@ -1,5 +1,5 @@
-﻿	#pragma strict
-	import System.Collections.Generic;
+﻿#pragma strict
+import System.Collections.Generic;
 
 public var obj1: GameObject;
 public var obj2: GameObject;
@@ -35,6 +35,12 @@ public var foundObjsV2: List.<GameObject>;
 public var lastName: String;
 public var amountFound: int;
 public var matchedObjsV2: List.<GameObject>;
+public var swap: Swap;
+function Start()
+{
+	// get reference to swap script
+	swap = gameObject.FindGameObjectWithTag("swap").GetComponent(Swap);
+}
 
 function Update () 
 {
@@ -101,6 +107,7 @@ function OnTriggerEnter2D(other:Collider2D)
 
 function CheckMatches()
 {
+
 	matchedObjsV2.Clear();
 	amountFound = 0;
 	foundObjsV2.Clear();
@@ -115,6 +122,8 @@ function CheckMatches()
 	if (obj5 != null)
 	foundObjsV2.Add (obj5); 
 	lastName = foundObjsV2[0].name;
+
+	// for the amount of objs the checker has found, loop throough them
 	for(var i = 0; i < (lastAmountObjsFound); i++)
 	{
 		if(foundObjsV2[i].name == lastName)
@@ -128,22 +137,27 @@ function CheckMatches()
 			{
 				Debug.Log(gameObject.name + " new match 3");
 				ExecuteMatch();
+				return;
 			}
 			if (amountFound == 4)
 			{	
 				Debug.Log(gameObject.name + " new match 4");
 				ExecuteMatch();
+				return;
+				
 			}
 			if (amountFound == 5)
 			{
 				Debug.Log(gameObject.name + " new match 5");
 				ExecuteMatch();
+				return;
+				
 			}
+			//if this obj dont match the one before
 			lastName = foundObjsV2[i].name;
 			amountFound = 1;
 			matchedObjsV2.Clear();
 			matchedObjsV2.Add(foundObjsV2[i]);
-			
 			
 		}
 	}
@@ -151,18 +165,24 @@ function CheckMatches()
 	{
 		Debug.Log(gameObject.name + " new match 3");
 		ExecuteMatch();
+				return;
+		
 	}
 	if (amountFound == 4)
 	{	
 		Debug.Log(gameObject.name + " new match 4");
 		ExecuteMatch();
+				return;
+		
 	}
 	if (amountFound == 5)
 	{
 		Debug.Log(gameObject.name + " new match 5");
 		ExecuteMatch();
+				return;
+		
 	}
-	
+
 }
 function ExecuteMatch()
 {
@@ -196,8 +216,18 @@ function ExecuteMatch()
 		}
 	}
 }
-	
-	
+function CheckForLastObj()
+{
+	for(var matchObjV2: GameObject in matchedObjsV2)
+		{
+			if( matchObjV2 == Swap.lastObjMoved)
+			{
+				swap.SwapBack();
+				Debug.Log("swapback");
+			}
+		}
+}
+
 
 
 /*function CheckMatches()

@@ -2,7 +2,7 @@
 
 public var bakeryPurchased: boolean;
 public var bakeryPrice: float;
-public var managementSceneUIScript: managementSceneUI;
+public var managementSceneUIScript: ManagementSceneUI;
 
 public var currentBusiness: String;
 

@@ -19,7 +19,7 @@ function Start ()
 		customerSatisfaction = gameObject.FindGameObjectWithTag("CustomerSatisfaction").GetComponent.<CustomerSatisfaction>();
 		rating = 10;
 
-		var rand = Random.Range (0,4);
+		var rand = Random.Range (0,5);
 		order = meals[rand];
 		orderText.text = order;
 		var i: int; 

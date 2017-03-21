@@ -81,13 +81,17 @@ function OnCollisionStay2D(other:Collision2D)
 	{
 		if (mealName == other.gameObject.GetComponent.<Customer>().order)
 		{
+			other.gameObject.GetComponent.<Customer>().rating += 1;
+		} else {
+			other.gameObject.GetComponent.<Customer>().rating = 0;
+		}
 			other.gameObject.GetComponent.<Customer>().SendRating();
 			customerManager.CustomerServed();
 			money.money += 15;
 			Debug.Log("served");
 			Destroy (other.gameObject);
 			Destroy (this.gameObject);
-		}
+		
 		Debug.Log ("colliding");
 	}
 }

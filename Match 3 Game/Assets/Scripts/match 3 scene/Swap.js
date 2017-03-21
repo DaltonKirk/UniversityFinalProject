@@ -54,4 +54,10 @@ function Check()
 	checkScript.RunAllChecks();
 	yield WaitForSeconds(1);
 	swapCooldown = false;
+	Checker.nonMatchCount = 0;
+}
+public function SwapBack()
+{
+	 		hit.collider.gameObject.transform.position = pos1; //swap back the objs position
+            hit2.collider.gameObject.transform.position = pos2;//swap back the objs postion
 }

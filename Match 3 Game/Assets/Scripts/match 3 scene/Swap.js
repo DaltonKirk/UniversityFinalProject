@@ -11,9 +11,10 @@ public var pos2: Vector2;
 public var hit2: RaycastHit2D;
 public var checkScript: runChecker;
 static var lastObjMoved: GameObject;
+static var swapCooldown: boolean;
 function Update() {
     //If the left mouse button is clicked.
-    if (Input.GetMouseButtonDown(0)) {
+    if (Input.GetMouseButtonDown(0) && swapCooldown == false) {
         //Get the mouse position on the screen and send a raycast into the game world from that position.
         worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         hit = Physics2D.Raycast(worldPoint, Vector2.zero);
@@ -25,7 +26,7 @@ function Update() {
         }
     }
 
-       if (Input.GetMouseButtonUp(0)) {
+       if (Input.GetMouseButtonUp(0) && swapCooldown == false) {
         //Get the mouse position on the screen and send a raycast into the game world from that position.
         worldPoint2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         hit2 = Physics2D.Raycast(worldPoint2, Vector2.zero);
@@ -39,6 +40,7 @@ function Update() {
 			hit.collider.gameObject.GetComponent.<meal>().myColumn = secondObjColumn; //swap column number
 			hit2.collider.gameObject.GetComponent.<meal>().myColumn = firstObjColumn; //swap column number
 			lastObjMoved = hit.collider.gameObject;
+	swapCooldown = true;
 			
 			Check();
 			
@@ -50,4 +52,6 @@ function Check()
 	checkScript.Scan();
 	yield WaitForSeconds(0.5);
 	checkScript.RunAllChecks();
+	yield WaitForSeconds(1);
+	swapCooldown = false;
 }

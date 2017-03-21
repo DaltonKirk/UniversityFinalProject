@@ -2,7 +2,7 @@
 
 public var bakeryPurchased: boolean;
 public var bakeryPrice: float;
-public var managementSceneUI: ManagementSceneUI;
+public var managementSceneUIScript: managementSceneUI;
 
 public var currentBusiness: String;
 
@@ -17,7 +17,7 @@ function Start()
 	}
 	//Load purchases
 	bakeryPurchased = (PlayerPrefs.GetInt("bakeryPurchased") != 0);
-	managementSceneUI.UpdateBusinessesOwnedText();
+	managementSceneUIScript.UpdateBusinessesOwnedText();
 }
 //select fast food and save
 function FastFood()
@@ -33,7 +33,7 @@ function BakeryButton()
 		money.money -= bakeryPrice;
 		bakeryPurchased = true;
 		PlayerPrefs.SetInt("bakeryPurchased", (bakeryPurchased ? 1 : 0));
-		managementSceneUI.UpdateBusinessesOwnedText();
+		managementSceneUIScript.UpdateBusinessesOwnedText();
 		currentBusiness = "Bakery";
 		PlayerPrefs.SetString("currentBusiness", currentBusiness);
 	}

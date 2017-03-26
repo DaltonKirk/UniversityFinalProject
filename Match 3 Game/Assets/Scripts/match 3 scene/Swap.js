@@ -12,6 +12,7 @@ public var hit2: RaycastHit2D;
 public var checkScript: runChecker;
 static var lastObjMoved: GameObject;
 static var swapCooldown: boolean;
+public var matchFoundInChecker: boolean;
 function Update() {
     //If the left mouse button is clicked.
     if (Input.GetMouseButtonDown(0) && swapCooldown == false) {
@@ -53,8 +54,13 @@ function Check()
 	yield WaitForSeconds(0.5);
 	checkScript.RunAllChecks();
 	yield WaitForSeconds(1);
+	Debug.Log("bool checked");
+	if(!matchFoundInChecker)
+	{
+	SwapBack();
+	}
+	matchFoundInChecker = false;
 	swapCooldown = false;
-	Checker.nonMatchCount = 0;
 }
 public function SwapBack()
 {

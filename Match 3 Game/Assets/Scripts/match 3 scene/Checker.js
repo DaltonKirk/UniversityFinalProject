@@ -39,7 +39,7 @@ public var swap: Swap;
 function Start()
 {
 	// get reference to swap script
-	swap = gameObject.FindGameObjectWithTag("swap").GetComponent(Swap);
+	//swap = gameObject.FindGameObjectWithTag("swap").GetComponent(Swap);
 }
 
 function Update () 
@@ -194,6 +194,8 @@ function ExecuteMatch()
 			if( matchObjV2 == Swap.lastObjMoved)
 			{
 				validMatch = true;
+				swap.matchFoundInChecker = true;
+				Debug.Log("bool set");
 			}
 		}
 		if (validMatch)

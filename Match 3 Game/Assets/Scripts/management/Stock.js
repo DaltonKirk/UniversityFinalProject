@@ -9,7 +9,7 @@ function Start()
 {
 	stock = PlayerPrefs.GetInt("stock");
 	
-	stockDisplay.text = "Stock: " + stock;
+	stockDisplay.text = stock.ToString();
 }
 
 function Buy1Stock()
@@ -18,7 +18,7 @@ function Buy1Stock()
 	{
 		money.money -= stockPrice;
 	stock ++;
-	stockDisplay.text = "Stock: " + stock;
+	stockDisplay.text = stock.ToString();
 	}
 }
 function Buy10Stock()
@@ -27,6 +27,6 @@ function Buy10Stock()
 	{
 	money.money -= (stockPrice * 10);
 	stock += 10;
-	stockDisplay.text = "Stock: " + stock;
+	stockDisplay.text = stock.ToString();
 	}
 }

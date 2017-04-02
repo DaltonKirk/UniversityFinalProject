@@ -1,7 +1,7 @@
 ﻿#pragma strict
 import UnityEngine.UI;
 
-public var repDisplay: Text;
+public var repDisplay: Image;
 public var repChangeText: Text;
 public var avgRatingText: Text;
 public var moneyMadeText: Text;
@@ -12,7 +12,7 @@ public var bakeryPriceText: Text;
 
 function Start()
 {
-	repDisplay.text = "Reputation: " + PlayerPrefs.GetFloat("reputation").ToString("f2");
+	repDisplay.fillAmount = PlayerPrefs.GetFloat("reputation")/100;
 	repChangeText.text = "Reputation Change: " + PlayerPrefs.GetFloat("repChange").ToString("f2");
 	avgRatingText.text = "Average Rating: " + (PlayerPrefs.GetFloat("customerRatingsAveragePercentage")*10).ToString("f1")+"/10";
 	moneyMadeText.text = "Money Made: ";

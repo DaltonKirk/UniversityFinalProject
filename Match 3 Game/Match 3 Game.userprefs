@@ -1,12 +1,15 @@
 ﻿<Properties StartupItem="Assembly-UnityScript.unityproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\match 3 scene\Swap.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\management\ManagementSceneUI.js">
     <Files>
-      <File FileName="Assets\Scripts\match 3 scene\Swap.js" Line="62" Column="30" />
+      <File FileName="Assets\Scripts\match 3 scene\Swap.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\management\BusinessManager.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\match 3 scene\Customer.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\match 3 scene\ReadyMeal.js" Line="86" Column="57" />
-      <File FileName="Assets\Scripts\match 3 scene\Checker.js" Line="198" Column="27" />
+      <File FileName="Assets\Scripts\match 3 scene\ReadyMeal.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\match 3 scene\Checker.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\management\ManagementSceneUI.js" Line="4" Column="29" />
+      <File FileName="Assets\Scripts\management\money.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\management\Stock.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

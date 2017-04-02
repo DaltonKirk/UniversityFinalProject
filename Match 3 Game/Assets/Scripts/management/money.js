@@ -17,7 +17,7 @@ function Start()
 function Update()
 {
 //display money
-	moneyDisplay.text = "£" + money.ToString("f2");
+	moneyDisplay.text = money.ToString("f2");
 	
 	if(Input.GetKeyDown(KeyCode.M))
 	{

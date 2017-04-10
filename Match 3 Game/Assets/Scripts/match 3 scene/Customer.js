@@ -14,6 +14,8 @@ public var ratingDecreaseSpeed: float;
 
 
 
+
+
 function Start () 
 {
 		customerSatisfaction = gameObject.FindGameObjectWithTag("CustomerSatisfaction").GetComponent.<CustomerSatisfaction>();

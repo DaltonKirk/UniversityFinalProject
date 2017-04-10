@@ -25,7 +25,7 @@ function Start () {
 	reputation = PlayerPrefs.GetFloat("reputation");
 	maxCustomers = (reputation/100)*10;
 	if (maxCustomers < 1){
-	maxCustomers = 1;
+	maxCustomers = 3;
 	}
 }
 
@@ -93,5 +93,7 @@ function CustomerServed()
 	customers = gameObject.FindGameObjectsWithTag("customer");
 	for (var customerObj: GameObject in customers){
 		customerObj.GetComponent.<Customer>().speed = -1;
+
 	}
+
 }

@@ -9,6 +9,7 @@ public var readyMealSpawnPos: GameObject;
 public var sprites: Sprite[];
 public var spritesBakery: Sprite[];
 public var customerManager: CustomerManager;
+public var customerServedEffectPrefab: GameObject;
 
 
 function Start()
@@ -89,6 +90,8 @@ function OnCollisionStay2D(other:Collision2D)
 			customerManager.CustomerServed();
 			money.money += 15;
 			Debug.Log("served");
+			var effect = Instantiate(customerServedEffectPrefab,other.transform.position,transform.rotation);
+			effect.GetComponent(MoveUpAndFade).rating = other.gameObject.GetComponent.<Customer>().rating;
 			Destroy (other.gameObject);
 			Destroy (this.gameObject);
 		

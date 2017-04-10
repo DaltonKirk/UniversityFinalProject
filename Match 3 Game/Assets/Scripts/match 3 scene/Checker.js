@@ -107,7 +107,8 @@ function OnTriggerEnter2D(other:Collider2D)
 
 function CheckMatches()
 {
-
+if(objectsHit > 0)
+{
 	matchedObjsV2.Clear();
 	amountFound = 0;
 	foundObjsV2.Clear();
@@ -182,7 +183,7 @@ function CheckMatches()
 				return;
 		
 	}
-
+	}
 }
 function ExecuteMatch()
 {

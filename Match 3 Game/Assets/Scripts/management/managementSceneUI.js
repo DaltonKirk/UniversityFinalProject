@@ -5,8 +5,11 @@ public var repDisplay: Image;
 public var repChangeText: Text;
 public var avgRatingText: Text;
 public var moneyMadeText: Text;
+public var stockDisplay: Text;
+public var stockDisplayColour: Color;
 public var summaryPanel: GameObject;
 public var businessManager: BusinessManager;
+public var lowOnStockPanel: GameObject;
 
 public var bakeryPriceText: Text;
 
@@ -21,7 +24,13 @@ function Start()
 }
 function GoToRestaurant()
 {
-	Application.LoadLevel("main");
+	if(Stock.stock > 0)
+	{
+	OpenShop();
+	} else if (Stock.stock < 30) {
+	lowOnStockPanel.SetActive (true);
+	TextFlash();
+	}
 }
 function HideSummary()
 {
@@ -38,4 +47,28 @@ function UpdateBusinessesOwnedText()
 	{
 		bakeryPriceText.text = "Owned";
 	}
+}
+function TextFlash()
+{
+stockDisplay.color = Color.red;
+yield WaitForSeconds(0.2);
+stockDisplay.color = stockDisplayColour;
+yield WaitForSeconds(0.2);
+stockDisplay.color = Color.red;
+yield WaitForSeconds(0.2);
+stockDisplay.color = stockDisplayColour;
+yield WaitForSeconds(0.2);
+}
+
+function LowStockNoButton()
+{
+	lowOnStockPanel.SetActive (false);
+}
+
+function OpenShop()
+{
+	var playedBefore: boolean = true;
+	PlayerPrefs.SetInt("PlayedBefore", (playedBefore ? 1 : 0));
+	Debug.Log("saved: " + (PlayerPrefs.GetInt("PlayedBefore") != 0));
+	Application.LoadLevel("main");
 }

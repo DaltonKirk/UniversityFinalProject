@@ -16,6 +16,8 @@ public var spawnPoint: Vector3;
 public var customers: GameObject[];
 public var customerSatisfaction: CustomerSatisfaction;
 private var reputation: float;
+//if no one has been served we dont update rep otherwise it breaks and becomes NaN
+public var aCustomerHasBeenServed: boolean;
 
 
 
@@ -23,8 +25,8 @@ private var reputation: float;
 function Start () {
 	gridSpawner.SpawnGrid();
 	reputation = PlayerPrefs.GetFloat("reputation");
-	maxCustomers = (reputation/100)*10;
-	if (maxCustomers < 1){
+	maxCustomers = (reputation/100)*30;
+	if (maxCustomers < 3){
 	maxCustomers = 3;
 	}
 }
@@ -59,7 +61,10 @@ function CloseShop()
 		bottomCollider.SetActive(false);
 		DeleteObjs();
 		Stock.stock = gridSpawner.numberOfMealsInStock;
+		if(aCustomerHasBeenServed)
+		{
 		customerSatisfaction.UpdateReputation();
+		}
 		Debug.Log("load scene");
 		PlayerPrefs.SetFloat("money", money.money);
 		PlayerPrefs.SetInt("stock", Stock.stock);
@@ -89,6 +94,7 @@ function DeleteObjs()
 }
 function CustomerServed()
 {
+aCustomerHasBeenServed = true;
 	concurrentCustomersSpawned --;
 	customers = gameObject.FindGameObjectsWithTag("customer");
 	for (var customerObj: GameObject in customers){

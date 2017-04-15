@@ -36,5 +36,6 @@ var oldRep = reputation;
 	PlayerPrefs.SetFloat("customerRatingsAveragePercentage", customerRatingsAveragePercentage);
 	var repChange = reputation - oldRep;
 	PlayerPrefs.SetFloat("repChange", repChange); 
+	PlayerPrefs.SetFloat("oldRep", oldRep); 
 	Debug.Log(reputation);
 }

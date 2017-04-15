@@ -16,9 +16,9 @@ public var bakeryPriceText: Text;
 function Start()
 {
 	repDisplay.fillAmount = PlayerPrefs.GetFloat("reputation")/100;
-	repChangeText.text = "Reputation Change: " + PlayerPrefs.GetFloat("repChange").ToString("f2");
-	avgRatingText.text = "Average Rating: " + (PlayerPrefs.GetFloat("customerRatingsAveragePercentage")*10).ToString("f1")+"/10";
-	moneyMadeText.text = "Money Made: ";
+	//repChangeText.text = "Reputation Change: " + PlayerPrefs.GetFloat("repChange").ToString("f2");
+	//avgRatingText.text = "Average Rating: " + (PlayerPrefs.GetFloat("customerRatingsAveragePercentage")*10).ToString("f1")+"/10";
+	//moneyMadeText.text = "Money Made: ";
 	UpdateBusinessesOwnedText();
 
 }

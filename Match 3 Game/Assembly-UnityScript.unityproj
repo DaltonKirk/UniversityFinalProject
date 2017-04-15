@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\management\ManagementSceneTips.js" />
      <Compile Include="Assets\Scripts\management\ManagementSceneUI.js" />
      <Compile Include="Assets\Scripts\management\Stock.js" />
+     <Compile Include="Assets\Scripts\management\Summary.js" />
      <Compile Include="Assets\Scripts\management\money.js" />
      <Compile Include="Assets\Scripts\match 3 scene\Checker.js" />
      <Compile Include="Assets\Scripts\match 3 scene\Customer.js" />

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 898eb7c62fd99834bade9c822bf4f63e
+timeCreated: 1492271212
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Old Cave
+  fontNames:
+  - Old Cave
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

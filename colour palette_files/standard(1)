@@ -1,1 +1,0 @@
- /* tag plugin */ mboxFactories.get('default').get('SiteCatalyst: event',1).setOffer(new mboxOfferDefault()).loaded();

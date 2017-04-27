@@ -13,7 +13,7 @@ function Start ()
 
 function Update () 
 {
-moneyDisplayObj.text = "£" + money.money.ToString("f2");
+//moneyDisplayObj.text = "£" + money.money.ToString("f2");
 stockDisplayObj.text = "Stock: " + columnScript.numberOfMealsInStock.ToString();
 
 }

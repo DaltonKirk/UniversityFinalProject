@@ -10,6 +10,7 @@ public var sprites: Sprite[];
 public var spritesBakery: Sprite[];
 public var customerManager: CustomerManager;
 public var customerServedEffectPrefab: GameObject;
+public var mealPrice: float;
 
 
 function Start()
@@ -88,7 +89,10 @@ function OnCollisionStay2D(other:Collision2D)
 		}
 			other.gameObject.GetComponent.<Customer>().SendRating();
 			customerManager.CustomerServed();
-			money.money += 15;
+			money.money += mealPrice;
+			var moneyEarned:float = PlayerPrefs.GetFloat("moneyEarned");
+			moneyEarned += mealPrice;
+			PlayerPrefs.SetFloat("moneyEarned", moneyEarned);
 			Debug.Log("served");
 			var effect = Instantiate(customerServedEffectPrefab,other.transform.position,transform.rotation);
 			effect.GetComponent(MoveUpAndFade).rating = other.gameObject.GetComponent.<Customer>().rating;

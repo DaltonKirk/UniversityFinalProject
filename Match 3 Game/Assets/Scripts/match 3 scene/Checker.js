@@ -36,6 +36,8 @@ public var lastName: String;
 public var amountFound: int;
 public var matchedObjsV2: List.<GameObject>;
 public var swap: Swap;
+public var starsParticlePrefab: GameObject;
+
 function Start()
 {
 	// get reference to swap script
@@ -213,6 +215,7 @@ function ExecuteMatch()
 			Instantiate(tile, pos, transform.rotation);
 			columnScript.numberOfMealsInStock --;
 			}
+			Instantiate(starsParticlePrefab, matchObjV2.transform.position, transform.rotation);
 			Destroy(matchObjV2);
 		}
 		matchedObjsV2.Clear();

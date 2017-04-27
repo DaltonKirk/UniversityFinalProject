@@ -1,7 +1,7 @@
 ﻿#pragma strict
 import UnityEngine.UI;
 
-public var welcomePanel: GameObject;
+
 public var lowOnStockPanel: GameObject;
 public var puchaseNewBusinessPanel: GameObject;
 public var playedBefore: boolean;
@@ -18,10 +18,10 @@ function Start () {
 
 	if(!playedBefore)
 	{
-		welcomePanel.SetActive (true);
+		
 		summaryPanel.SetActive (false);
 	} else {
-	summaryPanel.SetActive (true);
+		summaryPanel.SetActive (true);
 	}
 
 	

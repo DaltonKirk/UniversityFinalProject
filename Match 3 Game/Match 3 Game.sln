@@ -1,6 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{C28D2521-A737-C940-5811-F5C153E74B64}") = "Match 3 Game", "Assembly-CSharp-firstpass.csproj", "{5B73E199-F4A8-6511-6ABA-F4B539A6745D}"
+EndProject
+Project("{C28D2521-A737-C940-5811-F5C153E74B64}") = "Match 3 Game", "Assembly-CSharp-Editor-firstpass.csproj", "{23CB575B-0F0B-879C-50BA-8386310BBB2B}"
+EndProject
 Project("{C28D2521-A737-C940-5811-F5C153E74B64}") = "Match 3 Game", "Assembly-CSharp-Editor.csproj", "{4FF92D91-2298-D0F3-5966-05F8C71F4F0C}"
 EndProject
 Project("{C28D2521-A737-C940-5811-F5C153E74B64}") = "Match 3 Game", "Assembly-UnityScript.unityproj", "{80E97F5B-2AEF-B5C6-3268-9AA66AA46D44}"
@@ -11,6 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B73E199-F4A8-6511-6ABA-F4B539A6745D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B73E199-F4A8-6511-6ABA-F4B539A6745D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B73E199-F4A8-6511-6ABA-F4B539A6745D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B73E199-F4A8-6511-6ABA-F4B539A6745D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CB575B-0F0B-879C-50BA-8386310BBB2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CB575B-0F0B-879C-50BA-8386310BBB2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CB575B-0F0B-879C-50BA-8386310BBB2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CB575B-0F0B-879C-50BA-8386310BBB2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FF92D91-2298-D0F3-5966-05F8C71F4F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FF92D91-2298-D0F3-5966-05F8C71F4F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FF92D91-2298-D0F3-5966-05F8C71F4F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU

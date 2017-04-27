@@ -1,13 +1,12 @@
-﻿<Properties StartupItem="Assembly-CSharp-Editor.csproj">
+﻿<Properties StartupItem="Assembly-CSharp-firstpass.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\management\ManagementSceneUI.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\match 3 scene\Checker.js">
     <Files>
       <File FileName="Assets\Scripts\match 3 scene\CustomerManager.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\match 3 scene\CustomerSatisfaction.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\management\ManagementSceneTips.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\management\BusinessManager.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\management\ManagementSceneUI.js" Line="18" Column="2" />
-      <File FileName="Assets\Scripts\management\Summary.js" Line="44" Column="10" />
+      <File FileName="Assets\Scripts\match 3 scene\ReadyMeal.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\management\Summary.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\match 3 scene\Customer.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\match 3 scene\Checker.js" Line="218" Column="66" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

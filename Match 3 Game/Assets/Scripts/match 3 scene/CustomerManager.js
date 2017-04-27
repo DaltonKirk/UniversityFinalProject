@@ -18,11 +18,15 @@ public var customerSatisfaction: CustomerSatisfaction;
 private var reputation: float;
 //if no one has been served we dont update rep otherwise it breaks and becomes NaN
 public var aCustomerHasBeenServed: boolean;
+public var moneyEarned: float;
 
 
 
 
 function Start () {
+//Set this to 0 each time we load this scene so we can start the count from 0.
+	PlayerPrefs.SetFloat("moneyEarned", 0);
+
 	gridSpawner.SpawnGrid();
 	reputation = PlayerPrefs.GetFloat("reputation");
 	maxCustomers = (reputation/100)*30;

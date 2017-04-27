@@ -1,7 +1,7 @@
 ﻿#pragma strict
 public var order: String;
 public var meals: String[];
-public var orderText: TextMesh;
+//public var orderText: TextMesh;
 public var stopPoint: Vector2;
 public var speed: float;
 public var mealSprites: Sprite[];
@@ -11,6 +11,9 @@ public var speechBubbleObj: GameObject;
 public var rating: float;
 public var customerSatisfaction: CustomerSatisfaction;
 public var ratingDecreaseSpeed: float;
+public var timeWaited: float;
+public var timeToWaitUntilOrder: float;
+public var ordered: boolean; 
 
 
 
@@ -23,7 +26,7 @@ function Start ()
 
 		var rand = Random.Range (0,5);
 		order = meals[rand];
-		orderText.text = order;
+		//orderText.text = order;
 		var i: int; 
 		switch(order)
 		{
@@ -51,23 +54,30 @@ function Start ()
 
 function Update () 
 {
+	timeWaited += 1 * Time.deltaTime;
+
+	if(timeWaited > timeToWaitUntilOrder)
+	{
+		MakeOrder();
+	}
 		if (transform.position.x > stopPoint.x){
 			transform.position.x += speed * Time.deltaTime;
-		} else {
-			MakeOrder();
 		}
+	if(ordered)
 		rating += ratingDecreaseSpeed * Time.deltaTime;
 }
-function OnCollisionStay2D()
-{
-	speed = 0;
-}
+
 function MakeOrder()
 {
 	speechBubbleObj.SetActive(true);
+	ordered = true;
 }
 function SendRating()
 {
+	if(rating > 10)
+	{
+	rating = 10;
+	}
 	customerSatisfaction.customerRatingsTotal += rating;
 	customerSatisfaction.numberOfRatings ++;
 }

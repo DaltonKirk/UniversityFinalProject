@@ -11,10 +11,30 @@ public var spritesBakery: Sprite[];
 public var customerManager: CustomerManager;
 public var customerServedEffectPrefab: GameObject;
 public var mealPrice: float;
+public var amountMatched: int;
+public var pEffectPrefabMatch4: GameObject;
+public var pEffectPrefabMatch5: GameObject;
 
 
 function Start()
 {
+// if the match contain 4 or more, create particle effect to make shiny
+	if(amountMatched == 4)
+	{
+		var  pEffectMatch4 = Instantiate(pEffectPrefabMatch4, transform.position, transform.rotation);
+		pEffectMatch4.transform.SetParent (gameObject.transform, false);
+		// Setting as parent, to make the obj follow this obj takes too long and ends up being offset so ill have to set pos again
+		pEffectMatch4.transform.position = transform.position;
+
+	} else if(amountMatched == 5) {
+
+		var  pEffectMatch5 = Instantiate(pEffectPrefabMatch5, transform.position, transform.rotation);
+		pEffectMatch5.transform.SetParent (gameObject.transform, false);
+		// Setting as parent, to make the obj follow this obj takes too long and ends up being offset so ill have to set pos again
+		pEffectMatch5.transform.position = transform.position;
+		
+	}
+
 	customerManager = gameObject.FindGameObjectWithTag("CustomerManager").GetComponent.<CustomerManager>();
 	readyMealSpawnPos = gameObject.FindGameObjectWithTag ("readyMealSpawnPos");
 	var i: int; 
@@ -100,5 +120,10 @@ function OnCollisionStay2D(other:Collision2D)
 			Destroy (this.gameObject);
 		
 		Debug.Log ("colliding");
+	}
+
+	if(other.gameObject.tag == "bin")
+	{
+		Destroy(gameObject);
 	}
 }

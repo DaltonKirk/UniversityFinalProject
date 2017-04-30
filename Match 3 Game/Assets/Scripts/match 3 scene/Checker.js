@@ -37,6 +37,8 @@ public var amountFound: int;
 public var matchedObjsV2: List.<GameObject>;
 public var swap: Swap;
 public var starsParticlePrefab: GameObject;
+public var starsParticlePrefabMatch4: GameObject;
+public var starsParticlePrefabMatch5: GameObject;
 
 function Start()
 {
@@ -205,6 +207,7 @@ function ExecuteMatch()
 		{
 		var  madeMeal = Instantiate(readyMealObj, readyMealSpawnPoint, transform.rotation);
 		madeMeal.GetComponent.<ReadyMeal>().mealName =  matchedObjsV2[0].name;
+		madeMeal.GetComponent.<ReadyMeal>().amountMatched = amountFound;
 		for(var matchObjV2: GameObject in matchedObjsV2)
 		{
 			var pos: Vector2;
@@ -215,13 +218,23 @@ function ExecuteMatch()
 			Instantiate(tile, pos, transform.rotation);
 			columnScript.numberOfMealsInStock --;
 			}
-			Instantiate(starsParticlePrefab, matchObjV2.transform.position, transform.rotation);
+			switch (amountFound)
+			{
+			case 3:Instantiate(starsParticlePrefab, matchObjV2.transform.position, transform.rotation);
+			break;
+			case 4:Instantiate(starsParticlePrefabMatch4, matchObjV2.transform.position, transform.rotation);
+			break;
+			case 5:Instantiate(starsParticlePrefabMatch5, matchObjV2.transform.position, transform.rotation);
+			break;
+			
+			}
 			Destroy(matchObjV2);
 		}
 		matchedObjsV2.Clear();
 		}
 	}
 }
+//check if the match contains the meal that the player moved
 function CheckForLastObj()
 {
 	for(var matchObjV2: GameObject in matchedObjsV2)

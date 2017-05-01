@@ -1,4 +1,5 @@
 ﻿#pragma strict
+//Spawns customers
 import UnityEngine.UI;
 
 public var spawnPoints: GameObject[];
@@ -62,48 +63,26 @@ function SpawnCustomer()
 }
 function CloseShop()
 {
-		bottomCollider.SetActive(false);
-		DeleteObjs();
 		Stock.stock = gridSpawner.numberOfMealsInStock;
+//only update rep if we have served someone
 		if(aCustomerHasBeenServed)
 		{
-		customerSatisfaction.UpdateReputation();
+			customerSatisfaction.UpdateReputation();
 		}
 		Debug.Log("load scene");
 		PlayerPrefs.SetFloat("money", money.money);
 		PlayerPrefs.SetInt("stock", Stock.stock);
 		Application.LoadLevel("managementScene");
 }
-function DeleteObjs()
-{
-		yield WaitForSeconds (2);
-		//Delete Meals
-		var objs: GameObject[] = gameObject.FindGameObjectsWithTag("obj");
-		for(var i = 0; i < objs.length; i ++)
-		{
-			Destroy (objs[i]); 
-		}
-		//Delete ReadyMeals
-		var readyMeals: GameObject[] = gameObject.FindGameObjectsWithTag("readymeal");
-		for(var x = 0; x < readyMeals.length; x ++)
-		{
-			Destroy (readyMeals[x]); 
-		}
-		//Delete Customers
-		var customers: GameObject[] = gameObject.FindGameObjectsWithTag("customer");
-		for(var t = 0; t < customers.length; t ++)
-		{
-			Destroy (customers[t]); 
-		}
-}
+
 function CustomerServed()
 {
-aCustomerHasBeenServed = true;
+	aCustomerHasBeenServed = true;
 	concurrentCustomersSpawned --;
 	customers = gameObject.FindGameObjectsWithTag("customer");
-	for (var customerObj: GameObject in customers){
+	for (var customerObj: GameObject in customers)
+	{
 		customerObj.GetComponent.<Customer>().speed = -1;
-
 	}
 
 }

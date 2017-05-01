@@ -1,7 +1,6 @@
 ﻿#pragma strict
 public var order: String;
 public var meals: String[];
-//public var orderText: TextMesh;
 public var stopPoint: Vector2;
 public var speed: float;
 public var mealSprites: Sprite[];
@@ -29,7 +28,7 @@ function Start ()
 		//make a random order
 		var rand = Random.Range (0,5);
 		order = meals[rand];
-		//orderText.text = order;
+
 		var i: int; 
 		switch(order)
 		{

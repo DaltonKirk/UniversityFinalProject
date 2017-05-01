@@ -46,6 +46,8 @@ function Start()
 
 	customerManager = gameObject.FindGameObjectWithTag("CustomerManager").GetComponent.<CustomerManager>();
 	readyMealSpawnPos = gameObject.FindGameObjectWithTag ("readyMealSpawnPos");
+
+	//set sprite depending on meal name and what business is open
 	var i: int; 
 	switch(mealName)
 	{
@@ -76,7 +78,6 @@ function Update()
 	{
 		pickedUpObj.transform.position = currentWorldPoint;
 		isPickedUp = true;
-		//gameObject.GetComponent.<BoxCollider2D>().isTrigger = true;
 	}
 	currentWorldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	//when you click send raycast at that point
@@ -100,7 +101,6 @@ function Update()
 		{
             pickedUpObj = null;
 			isPickedUp = false;
-			//gameObject.GetComponent.<BoxCollider2D>().isTrigger = false;
 			transform.position = readyMealSpawnPos.transform.position;
 
         }
@@ -108,7 +108,7 @@ function Update()
 }
 function OnCollisionStay2D(other:Collision2D)
 {
-	if (other.gameObject.tag == "customer") //!isPickedUp && 
+	if (other.gameObject.tag == "customer") 
 	{
 		if (mealName == other.gameObject.GetComponent.<Customer>().order)
 		{

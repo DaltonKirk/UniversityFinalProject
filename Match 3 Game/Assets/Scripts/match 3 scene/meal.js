@@ -1,7 +1,8 @@
 ﻿#pragma strict
-
+//fast food sprites
 public var sprites: Sprite[];
 public var spritesBakery: Sprite[];
+//names of meals
 public var names: String[];
 public var generator: GameObject;
 public var objRB: Rigidbody2D;
@@ -14,13 +15,7 @@ function Start ()
 {
 	var currentBusiness = PlayerPrefs.GetString("currentBusiness");
 	objRB = GetComponent.<Rigidbody2D>();
-	//generator = gameObject.FindGameObjectWithTag ("gen");
-//	myColumn = column.currentColumn;
-	column.currentColumn ++;
-		if(column.currentColumn == column.setNumberOfColumns)
-		{
-			column.currentColumn = 0;
-		}
+
 //Set sprite depending on business loaded
 	switch (currentBusiness)
 	{
@@ -41,6 +36,7 @@ function Start ()
 
 function Update () 
 {
+//if the obj has not settled then the checkers will ignore them
 	if (gameObject.GetComponent.<Rigidbody2D>().velocity.y == 0 && !settled)
 	{
 		settleTime += 1 * Time.deltaTime;

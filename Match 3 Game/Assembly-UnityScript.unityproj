@@ -64,7 +64,6 @@
      <Compile Include="Assets\Scripts\match 3 scene\column.js" />
      <Compile Include="Assets\Scripts\match 3 scene\match3UI.js" />
      <Compile Include="Assets\Scripts\match 3 scene\meal.js" />
-     <Compile Include="Assets\Scripts\match 3 scene\objGen.js" />
      <Compile Include="Assets\Scripts\match 3 scene\runChecker.js" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
  <Reference Include="UnityEngine.UI">

@@ -8,7 +8,6 @@ public var spacing: int;
 public var startPos: Vector2;
 public var initStartPos: Vector2;
 public var tile: GameObject;
-static var currentColumn: int;
 static var finishedSpawning: boolean;
 public var columns: Vector2[];
 
@@ -20,51 +19,26 @@ function Start()
 function SpawnGrid () 
 {
 //so we know what to set the current column to in the meal script
-setNumberOfColumns = numberOfColumns;
-initStartPos = startPos;
+	setNumberOfColumns = numberOfColumns;
+	initStartPos = startPos;
 
 
 for (var x = 0; x < numberOfRows; x++)
-{
-	for (var i = 0; i < numberOfColumns; i++)
 	{
-		if(numberOfMealsInStock > 0)
+		for (var i = 0; i < numberOfColumns; i++)
 		{
-		//spawn a meal in the grid if there is any in stock
-		Instantiate (tile, startPos, transform.rotation);
-		numberOfMealsInStock --;
-		}
-		columns[i] = startPos;
+			if(numberOfMealsInStock > 0)
+			{
+				//spawn a meal in the grid if there is any in stock
+				Instantiate (tile, startPos, transform.rotation);
+				numberOfMealsInStock --;
+			}
+			columns[i] = startPos;
+			yield WaitForSeconds(0.1);
+			startPos.x += spacing;
+		}	
+		startPos = initStartPos;
 		yield WaitForSeconds(0.1);
-		
-		startPos.x += spacing;
-
-	
-	}	
-	startPos = initStartPos;
-	yield WaitForSeconds(0.1);
-}
-finishedSpawning = true;
-}
-
-/*
-public function Spawn()
-{
-for (var i = 0; i < 3; i++)
-	{
-	Instantiate (tile, columns[currentColumn], transform.rotation);
 	}
-	Debug.Log ("spawn new stuff");
+	finishedSpawning = true;
 }
-public function SpawnV()
-{
-	Instantiate (tile, columns[currentColumn - 1], transform.rotation);
-	Instantiate (tile, columns[currentColumn], transform.rotation);
-	Instantiate (tile, columns[currentColumn + 1], transform.rotation);
-	Debug.Log ("spawn new stuff");
-}
-public function Instan(myColumn)
-{
-	Instantiate (tile, columns[myColumn], transform.rotation);
-}
-*/

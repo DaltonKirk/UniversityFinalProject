@@ -1,4 +1,5 @@
 ﻿#pragma strict
+//This script runs the checkers when we want them to scan the grid for matches
 public var HChecker1Script: Checker;
 public var HChecker2Script: Checker;
 public var HChecker3Script: Checker;
@@ -11,18 +12,7 @@ public var VChecker4Script: Checker;
 public var VChecker5Script: Checker;
 public var timer: float;
 
-function Start () {
-	
-}
-
-function Update () 
-{
-if(Input.GetKeyDown (KeyCode.K))
-	{
-		RunAllChecks();
-		Debug.Log("Checking ALL");
-	}
-}
+//Makes the colliders move over the grid and detect the objs then checks for matches. Not the best system but it works and I've spent too much time on the on this for this project I need to move on.
 function RunAllChecks()
 {
 	HChecker1Script.CheckMatches();

@@ -3,16 +3,6 @@
 public var sprites: Sprite[];
 public var spritesBakery: Sprite[];
 public var names: String[];
-public var topFeeler: String;
-public var bottomFeeler: String;
-public var leftFeeler: String;
-public var rightFeeler: String;
-public var topFeelerObj: GameObject;
-public var leftObj: GameObject;
-public var topObj: GameObject;
-public var bottomObj: GameObject;
-public var rightObj: GameObject;
-public var myColumn: int;
 public var generator: GameObject;
 public var objRB: Rigidbody2D;
 public var matching: boolean;
@@ -24,8 +14,8 @@ function Start ()
 {
 	var currentBusiness = PlayerPrefs.GetString("currentBusiness");
 	objRB = GetComponent.<Rigidbody2D>();
-	generator = gameObject.FindGameObjectWithTag ("gen");
-	myColumn = column.currentColumn;
+	//generator = gameObject.FindGameObjectWithTag ("gen");
+//	myColumn = column.currentColumn;
 	column.currentColumn ++;
 		if(column.currentColumn == column.setNumberOfColumns)
 		{
@@ -60,51 +50,4 @@ function Update ()
 		settled = true;
 		}
 	}
-/*
-	if (topFeeler == gameObject.name && topFeeler == bottomFeeler && objRB.velocity.y == 0 && column.finishedSpawning && !matching) //if 3 in a row vertically
-	{
-	matching = true;
-		Debug.Log ("3 in a row!!");
-		//delete the matching objects
-		Destroy(topObj);
-		Destroy(bottomObj);
-		Destroy (this.gameObject);
-		generator.GetComponent.<column>().currentColumn = myColumn;
-		generator.GetComponent.<column>().Spawn();
-	matching = false;
-		
-	}
-	if (leftFeeler == gameObject.name && leftFeeler == rightFeeler && objRB.velocity.y == 0 && column.finishedSpawning && !matching)// if 3 in a row horizontally
-	{
-	matching = true;
-	Debug.Log ("3 in a row!!");
-	//delete the matching objects
-	Destroy(leftObj);
-	Destroy(rightObj);
-	Destroy (this.gameObject);
-	generator.GetComponent.<column>().currentColumn = myColumn;
-	generator.GetComponent.<column>().SpawnV();
-	matching = false;
-	
-	}
-	*/
 }
-/*
-
-	if (topFeeler == gameObject.name)
-	{
-		topMatches ++;
-		if (topObj1.name == gameObject.name)
-		{
-		topMatches ++;
-			if (topFeeler3 == name)
-			{
-			topMatches ++;
-			if (topFeeler4 == name)
-			topMatches++;
-			}
-		}
-	}
-
-
-	*/

@@ -23,7 +23,7 @@ function Update() {
         if (hit.collider != null && hit.collider.gameObject.tag == "obj") {
 			
             pos1 = hit.collider.gameObject.transform.position; //Get Position of first obj
-			firstObjColumn = hit.collider.gameObject.GetComponent.<meal>().myColumn; //Get column number of first obj
+//			firstObjColumn = hit.collider.gameObject.GetComponent.<meal>().myColumn; //Get column number of first obj
         }
     }
 
@@ -35,11 +35,11 @@ function Update() {
         if (hit2.collider != null  && hit.collider.gameObject.tag == "obj") {
 			
             pos2 = hit2.collider.gameObject.transform.position; // Get position of secong obj
-			secondObjColumn = hit2.collider.gameObject.GetComponent.<meal>().myColumn; //Get 2nd obj column number
+//			secondObjColumn = hit2.collider.gameObject.GetComponent.<meal>().myColumn; //Get 2nd obj column number
             hit.collider.gameObject.transform.position = pos2; //swap the objs position
             hit2.collider.gameObject.transform.position = pos1;//swap the objs postion
-			hit.collider.gameObject.GetComponent.<meal>().myColumn = secondObjColumn; //swap column number
-			hit2.collider.gameObject.GetComponent.<meal>().myColumn = firstObjColumn; //swap column number
+//			hit.collider.gameObject.GetComponent.<meal>().myColumn = secondObjColumn; //swap column number
+//			hit2.collider.gameObject.GetComponent.<meal>().myColumn = firstObjColumn; //swap column number
 			lastObjMoved = hit.collider.gameObject;
 	swapCooldown = true;
 			

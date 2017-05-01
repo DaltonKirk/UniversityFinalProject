@@ -22,8 +22,11 @@ public var ordered: boolean;
 function Start () 
 {
 		customerSatisfaction = gameObject.FindGameObjectWithTag("CustomerSatisfaction").GetComponent.<CustomerSatisfaction>();
+
+		//rating start at 10 and decreases over time
 		rating = 10;
 
+		//make a random order
 		var rand = Random.Range (0,5);
 		order = meals[rand];
 		//orderText.text = order;
@@ -41,6 +44,8 @@ function Start ()
 			case "black": i = 4;
 			break;
 		}
+
+		//change the array of sprites we use depending on business active
 		switch(PlayerPrefs.GetString ("currentBusiness"))
 		{
 		case "FastFood": orderSpriteObj.GetComponent.<SpriteRenderer>().sprite = mealSprites[i];
@@ -72,12 +77,16 @@ function MakeOrder()
 	speechBubbleObj.SetActive(true);
 	ordered = true;
 }
-function SendRating()
+function SendRating(perfectMeal: boolean)
 {
-	if(rating > 10)
+	//stop rating going over 10, also if served a match 5 meal make rating 10
+	if(rating > 10 || perfectMeal == true)
 	{
-	rating = 10;
+		rating = 10;
+		//check perfect meals are working
+		Debug.Log("perfect meal");
 	}
+
 	customerSatisfaction.customerRatingsTotal += rating;
 	customerSatisfaction.numberOfRatings ++;
 }

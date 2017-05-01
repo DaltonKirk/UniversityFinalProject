@@ -10,14 +10,18 @@ public var sprites: Sprite[];
 public var spritesBakery: Sprite[];
 public var customerManager: CustomerManager;
 public var customerServedEffectPrefab: GameObject;
-public var mealPrice: float;
+private var mealPrice: float;
+public var MealPrice: float;
 public var amountMatched: int;
 public var pEffectPrefabMatch4: GameObject;
 public var pEffectPrefabMatch5: GameObject;
+public var perfectMeal: boolean;
 
 
 function Start()
 {
+//Set the private var with the public var that you can change in the inspector
+	mealPrice = MealPrice;
 // if the match contain 4 or more, create particle effect to make shiny
 	if(amountMatched == 4)
 	{
@@ -25,6 +29,8 @@ function Start()
 		pEffectMatch4.transform.SetParent (gameObject.transform, false);
 		// Setting as parent, to make the obj follow this obj takes too long and ends up being offset so ill have to set pos again
 		pEffectMatch4.transform.position = transform.position;
+		//set mealPrice to give a bonus to the player
+		mealPrice = 20;
 
 	} else if(amountMatched == 5) {
 
@@ -32,6 +38,9 @@ function Start()
 		pEffectMatch5.transform.SetParent (gameObject.transform, false);
 		// Setting as parent, to make the obj follow this obj takes too long and ends up being offset so ill have to set pos again
 		pEffectMatch5.transform.position = transform.position;
+		//set mealPrice to give a bonus to the player
+		mealPrice = 25;
+		perfectMeal = true;
 		
 	}
 
@@ -107,7 +116,7 @@ function OnCollisionStay2D(other:Collision2D)
 		} else {
 			other.gameObject.GetComponent.<Customer>().rating = 0;
 		}
-			other.gameObject.GetComponent.<Customer>().SendRating();
+			other.gameObject.GetComponent.<Customer>().SendRating(perfectMeal);
 			customerManager.CustomerServed();
 			money.money += mealPrice;
 			var moneyEarned:float = PlayerPrefs.GetFloat("moneyEarned");

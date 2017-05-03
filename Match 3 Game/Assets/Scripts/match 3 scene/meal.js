@@ -9,6 +9,7 @@ public var objRB: Rigidbody2D;
 public var matching: boolean;
 public var settleTime: float;
 public var settled: boolean;
+private var lifetime: float;
 
 
 function Start () 
@@ -45,5 +46,11 @@ function Update ()
 		gameObject.tag = "obj";
 		settled = true;
 		}
+	}
+//if the bug occurs when two matches happen at once delete the one outside the grid(not a good fix but too late to re code how matches work)
+	lifetime += 1 * Time.deltaTime;
+	if(lifetime > 2 && transform.position.y > 4)
+	{
+		Destroy(gameObject);
 	}
 }

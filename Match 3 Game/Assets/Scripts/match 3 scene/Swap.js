@@ -11,11 +11,14 @@ public var checkScript: runChecker;
 static var lastObjMoved: GameObject;
 static var swapCooldown: boolean;
 public var matchFoundInChecker: boolean;
+public var binned: boolean;
 
 function Update() {
     //If the left mouse button is clicked.
     if (Input.GetMouseButtonDown(0) && swapCooldown == false) 
     {
+    //set binned to false so we can drop the meal
+    binned = false;
         //Get the mouse position on the screen and send a raycast into the game world from that position.
         worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         hit = Physics2D.Raycast(worldPoint, Vector2.zero);
@@ -25,14 +28,14 @@ function Update() {
             pos1 = hit.collider.gameObject.transform.position; //Get Position of first obj
         }
     }
-
-       if (Input.GetMouseButtonUp(0) && swapCooldown == false) 
+    //on mouse up we have to check if the meal was binned to avoid getting a null reference
+       if (Input.GetMouseButtonUp(0) && swapCooldown == false && !binned) 
        {
 	        //Get the mouse position on the screen and send a raycast into the game world from that position.
 	        worldPoint2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	        hit2 = Physics2D.Raycast(worldPoint2, Vector2.zero);
 	        //If something was hit, the RaycastHit2D.collider will not be null.
-	        if (hit2.collider != null  && hit.collider.gameObject.tag == "obj") 
+	        if (hit2.collider != null  && hit.collider != null && hit.collider.gameObject.tag == "obj") 
 	        {
 	            pos2 = hit2.collider.gameObject.transform.position; // Get position of secong obj
 	            hit.collider.gameObject.transform.position = pos2; //swap the objs position
@@ -62,3 +65,4 @@ public function SwapBack()
 	 		hit.collider.gameObject.transform.position = pos1; //swap back the objs position
             hit2.collider.gameObject.transform.position = pos2;//swap back the objs postion
 }
+

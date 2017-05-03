@@ -16,10 +16,12 @@ public var amountMatched: int;
 public var pEffectPrefabMatch4: GameObject;
 public var pEffectPrefabMatch5: GameObject;
 public var perfectMeal: boolean;
+public var swapScript: Swap;
 
 
 function Start()
 {
+	swapScript = GameObject.FindGameObjectWithTag("swap").GetComponent(Swap);
 //Set the private var with the public var that you can change in the inspector
 	mealPrice = MealPrice;
 // if the match contain 4 or more, create particle effect to make shiny
@@ -133,6 +135,7 @@ function OnCollisionStay2D(other:Collision2D)
 
 	if(other.gameObject.tag == "bin")
 	{
+		swapScript.binned = true;
 		Destroy(gameObject);
 	}
 }

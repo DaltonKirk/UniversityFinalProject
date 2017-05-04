@@ -63,7 +63,12 @@ function SpawnCustomer()
 }
 function CloseShop()
 {
-		Stock.stock = gridSpawner.numberOfMealsInStock;
+//saves stock left over
+		//Stock.stock = gridSpawner.numberOfMealsInStock;
+
+//gets rid of left over stock
+		Stock.stock = 0;
+
 //only update rep if we have served someone
 		if(aCustomerHasBeenServed)
 		{

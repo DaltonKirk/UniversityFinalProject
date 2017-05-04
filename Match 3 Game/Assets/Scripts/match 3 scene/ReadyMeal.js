@@ -127,6 +127,7 @@ function OnCollisionStay2D(other:Collision2D)
 			Debug.Log("served");
 			var effect = Instantiate(customerServedEffectPrefab,other.transform.position,transform.rotation);
 			effect.GetComponent(MoveUpAndFade).rating = other.gameObject.GetComponent.<Customer>().rating;
+			effect.GetComponent(MoveUpAndFade).moneyText.text = mealPrice.ToString();
 			Destroy (other.gameObject);
 			Destroy (this.gameObject);
 		

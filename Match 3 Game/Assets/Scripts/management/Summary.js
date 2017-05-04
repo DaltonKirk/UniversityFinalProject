@@ -13,17 +13,52 @@ public var averageRatingTextValue: float;
 public var newAverageRatingValue: float;
 public var showingAvgRating: boolean;
 public var repChange: float;
+private var repRecord: float;
+private var moneyEarnedRecord: float;
+private var ratingRecord: float;
+private var moneyEarned: float;
+private var newRepRec: boolean;
+private var newMoneyRec: boolean;
+private var newRatingRec: boolean;
+public var newMoneyRecordText: GameObject;
+public var newRepRecordText: GameObject;
+public var newRecordRatingText: GameObject;
+
 
 function Start () 
 {
+//load last session for summary
 	reputation = (PlayerPrefs.GetFloat("reputation"))/100;
 	oldRep = (PlayerPrefs.GetFloat("oldRep"))/100;
 	newAverageRatingValue = PlayerPrefs.GetFloat("customerRatingsAveragePercentage")*10;
+	moneyEarned = PlayerPrefs.GetFloat("moneyEarned");
+	repRecord = PlayerPrefs.GetFloat("repRecord");
+	moneyEarnedRecord = PlayerPrefs.GetInt("moneyEarnedRecord");
+	ratingRecord = PlayerPrefs.GetFloat("ratingRecord");
 	repChange = reputation - oldRep;
 	repOldImage.fillAmount = oldRep;
 	repLossImage.fillAmount = oldRep;
 	showingAvgRating = true;
 
+//check for new records
+	if(repChange > repRecord)
+	{
+		repRecord = repChange;
+		PlayerPrefs.SetFloat("repRecord", repRecord);
+		newRepRec = true;
+	}
+	if(moneyEarned > moneyEarnedRecord)
+	{
+		moneyEarnedRecord = moneyEarned;
+		PlayerPrefs.SetInt("moneyEarnedRecord", moneyEarnedRecord);
+		newMoneyRec = true;
+	}
+	if(newAverageRatingValue > ratingRecord)
+	{
+		ratingRecord = newAverageRatingValue;
+		PlayerPrefs.SetFloat("ratingRecord", ratingRecord);
+		newRatingRec = true;
+	}
 	
 }
 
@@ -52,7 +87,17 @@ function Update()
 			averageRatingTextValue = newAverageRatingValue;
 			averageRatingText.text = averageRatingTextValue.ToString("f2") + "/10";
 		}
+
 	}
+
+	//if we have finished counting up and there is a record show the new record text
+		if(averageRatingTextValue == newAverageRatingValue && newRatingRec)
+		{
+			newRecordRatingText.SetActive(newRatingRec);
+		}
+
+
+
 	//if rating is finished show rep change
 	if (averageRatingTextValue == newAverageRatingValue)
 	{
@@ -77,11 +122,21 @@ function Update()
 				repGainedImage.fillAmount = reputation;
 			}
 		}
+
 	}
+
+
+		//if we have finished counting up and there is a record show the new record text
+		if(repGainedImage.fillAmount == reputation && newRepRec)
+		{
+			newRepRecordText.SetActive(newRepRec);
+		}
+
+
 	//if rep change shown then show money earned
 	if (repOldImage.fillAmount == reputation || repGainedImage.fillAmount == reputation)
 	{
-	var moneyEarned = PlayerPrefs.GetFloat("moneyEarned");
+
 	var currentPercentage: float = moneyEarnedTextValue/moneyEarned;
 
 
@@ -107,6 +162,13 @@ function Update()
 				moneyEarnedText.text = "£" + moneyEarnedTextValue.ToString("f2");
 			}
 
+	//if we have finished counting up and there is a record show the new record text
+		if(moneyEarnedTextValue == moneyEarned && newMoneyRec)
+		{
+			newMoneyRecordText.SetActive(newMoneyRec);
+		}
+
 	}
+
 
 }

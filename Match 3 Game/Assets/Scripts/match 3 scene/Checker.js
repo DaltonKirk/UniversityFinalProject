@@ -124,6 +124,12 @@ if(objectsHit > 0)
 	foundObjs.Add (obj5); 
 	lastName = foundObjs[0].name;
 
+//really rare bug where lastAmountObjsFound reaches 6 so if it does ill set it to 5
+	if(lastAmountObjsFound >= 6)
+	{
+		lastAmountObjsFound = 5;
+	}
+
 	// for the amount of objs the checker has found, loop through them
 	for(var i = 0; i < (lastAmountObjsFound); i++)
 	{
